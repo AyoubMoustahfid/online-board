@@ -85,7 +85,7 @@ export declare global {
     mouse_move: (x: number, y: number) => void;
     undo: () => void;
     create_room: (username: string) => void;
-    join_room: (room: string, username: string) => void;
+    join_room: (room: string, name: string) => void;
     joined_room: () => void;
     leave_room: () => void;
     send_msg: (msg: string) => void;
