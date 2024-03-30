@@ -83,13 +83,13 @@ nextApp.prepare().then(async () => {
       else socket.emit("room_exists", false);
     });
 
-    socket.on("join_room", (roomId, username) => {
+    socket.on("join_room", (roomId, name) => {
       const room = rooms.get(roomId);
 
       if (room && room.users.size < 12) {
         socket.join(roomId);
 
-        room.users.set(socket.id, username);
+        room.users.set(socket.id, name);
         room.usersMoves.set(socket.id, []);
 
         io.to(socket.id).emit("joined", roomId);
