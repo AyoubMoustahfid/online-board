@@ -6,6 +6,8 @@ import { socket } from "@/common/lib/socket";
 import { useModal } from "@/common/recoil/modal";
 import { useSetRoomId } from "@/common/recoil/room";
 import NotFoundModal from "@/modules/home/modals/NotFound";
+import {img_join_room} from "@/common/constants/img"
+import Image from "next/image";
 
 const NameInput = () => {
   const setRoomId = useSetRoomId();
@@ -55,32 +57,47 @@ const NameInput = () => {
   };
 
   return (
-    <form
-      className="my-24 flex flex-col items-center"
-      onSubmit={handleJoinRoom}
-    >
-      <h1 className="text-5xl font-extrabold leading-tight sm:text-extra">
-        Collabio
-      </h1>
-      <h3 className="text-xl sm:text-2xl">Real-time whiteboard</h3>
+    <div className="grid place-items-center h-screen container">
+      <form
+        className="space-y-16"
+        onSubmit={handleJoinRoom}
+      >
+        <div className="flex flex-col space-y-4">
+          <div className="flex justify-center items-center max-w-full md:max-w-md">
+            <Image
+              src={img_join_room}
+              alt="image join in the room"
+              className="!h-5"
+            />
+          </div>
+          <div>
+          <div>
+              <h1 className="font-semibold text-xl text-blue-600">
+                Join Witheboard
+              </h1>
+              <h3 className="text-sm font-normal">Join Witheboard session with an ID</h3>
+            </div>
+          </div>
+        </div>
 
-      <div className="mt-10 mb-3 flex flex-col gap-2">
-        <label className="self-start font-bold leading-tight">
-          Enter your name
-        </label>
-        <input
-          className="rounded-xl border p-5 py-1"
-          id="room-id"
-          placeholder="Username..."
-          value={name}
-          onChange={(e) => setName(e.target.value.slice(0, 15))}
-        />
-      </div>
+        <div>
+          <div className="">
+            <div className="mb-4">
+              <label htmlFor="room-id" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter room id</label>
+              <input
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                id="room-id"
+                placeholder="Room id..."
+                value={roomId}
+                onChange={(e) => setRoomId(e.target.value)}
+              />
+            </div>
+          </div>
 
-      <button className="btn" type="submit">
-        Enter room
-      </button>
-    </form>
+          <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enter Room</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

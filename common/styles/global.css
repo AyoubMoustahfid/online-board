@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply font-montserrat font-medium focus:outline-none focus:ring focus:ring-red-500;
+  @apply font-montserrat font-medium focus:outline-none ;
 }
 
 @layer components {

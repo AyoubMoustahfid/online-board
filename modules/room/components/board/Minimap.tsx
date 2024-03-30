@@ -84,7 +84,7 @@ const MiniMap = ({ dragging }: { dragging: boolean }) => {
         dragTransition={{ power: 0, timeConstant: 0 }}
         onDragStart={() => setDraggingMinimap(true)}
         onDragEnd={() => setDraggingMinimap(false)}
-        className="absolute top-0 left-0 cursor-grab rounded-lg border-2 border-red-500"
+        className="absolute top-0 left-0 cursor-grab"
         style={{
           width: width / divider,
           height: height / divider,
